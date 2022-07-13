@@ -22,8 +22,6 @@ Roach = filter(Fish, Species == "Roach")
 # Predicting Fish Weight
 
 
-From this graph I see that the best two predictors of wt for Perch are Length3 and Height
-
 
 ## Perch
 
@@ -44,15 +42,10 @@ regsubsets.out <-
                method = "exhaustive")
 regsubsets.out
 ```
-From this graph I see that the best two predictors of wt for Perch are Length3 and Height
-
-
-## Perch
 
 ```{r}
-
-pwt =  lm(Weight~ Length1 + Length2 + Length3 + Height, data = Perch)
-summary(pwt)
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
 ```
 
 ### Best Models
@@ -83,6 +76,12 @@ regsubsets.out <-
 regsubsets.out
 ```
 
+```{r}
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+```
+
+
 ### Best Models
 
 ### Best Two regressor model
@@ -105,6 +104,11 @@ regsubsets.out <-
                force.in = NULL, force.out = NULL,
                method = "exhaustive")
 regsubsets.out
+```
+
+```{r}
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
 ```
 
 ### Best Models
