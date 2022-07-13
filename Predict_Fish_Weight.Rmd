@@ -12,11 +12,6 @@ output:
 ```{r include=FALSE,echo=FALSE}
 require(tigerstats)
 require(tidyverse)
-```
-
-```{r include=FALSE,echo=FALSE}
-require(tigerstats)
-require(tidyverse)
 
 Fish = read.csv("Fish.csv")
 Perch = filter(Fish, Species == "Perch")
@@ -26,23 +21,67 @@ Roach = filter(Fish, Species == "Roach")
 
 # Predicting Fish Weight
 
-```{r}
 
-pwt =  lm(Weight~ Length1+ Length2 + Length3 + Height, data = Perch)
-summary(pwt)
-```
+From this graph I see that the best two predictors of wt for Perch are Length3 and Height
 
 
 ## Perch
 
+```{r}
 
+pwt =  lm(Weight~ Length1 + Length2 + Length3 + Height, data = Perch)
+summary(pwt)
+```
+
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ Length1+ Length2 + Length3 + Height,
+               data = Perch,
+               nbest = 2,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+regsubsets.out
+```
+From this graph I see that the best two predictors of wt for Perch are Length3 and Height
+
+
+## Perch
+
+```{r}
+
+pwt =  lm(Weight~ Length1 + Length2 + Length3 + Height, data = Perch)
+summary(pwt)
+```
 
 ### Best Models
 
+The best model would have all four variables. 
+
 ### Best Two regressor model
 
+The best two regressor models is based on length 3 and height.
 
 ## Pike
+
+```{r}
+
+pwt =  lm(Weight~ Length1 + Length2 + Length3 + Height, data = Pike)
+summary(pwt)
+```
+
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ Length1+ Length2 + Length3 + Height,
+               data = Pike,
+               nbest = 2,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+regsubsets.out
+```
 
 ### Best Models
 
@@ -55,5 +94,3 @@ summary(pwt)
 ### Best Two regressor model
 
 ## Final Summary Statements
-
-
