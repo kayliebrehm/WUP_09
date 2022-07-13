@@ -125,3 +125,4 @@ The best two regressor model for Roach would be Length 1 and Length 3.
 
 ## Final Summary Statements
 
+For each category, the best models would have all four variables. For Perch, the best two regressor models would feature Length 3 and Height. For both Pike and Roach, the best two regressor models would feature Length 1 and Length 3. Length 3 is the most important variable for each fish.
