@@ -54,65 +54,74 @@ The best model would have all four variables.
 
 ### Best Two regressor model
 
-The best two regressor models is based on length 3 and height.
+The best two regressor model for Perch is length 3 and height.
 
 ## Pike
 
 ```{r}
 
-pwt =  lm(Weight~ Length1 + Length2 + Length3 + Height, data = Pike)
-summary(pwt)
+pwt2 =  lm(Weight~ Length1 + Length2 + Length3 + Height, data = Pike)
+summary(pwt2)
 ```
 
 ```{r}
 library(leaps)
-regsubsets.out <-
+regsubsets2.out <-
     regsubsets(Weight ~ Length1+ Length2 + Length3 + Height,
                data = Pike,
                nbest = 2,       # 1 best model for each number of predictors
                nvmax = NULL,    # NULL for no limit on number of variables
                force.in = NULL, force.out = NULL,
                method = "exhaustive")
-regsubsets.out
+regsubsets2.out
 ```
 
 ```{r}
-summary.out <- summary(regsubsets.out)
-as.data.frame(summary.out$outmat)
+summary2.out <- summary(regsubsets2.out)
+as.data.frame(summary2.out$outmat)
 ```
 
 
 ### Best Models
 
+The best model would have all four variables.
+
 ### Best Two regressor model
+
+The best two regressor model for Pike would be Length 1 and Length 3.
 
 ## Roach
 
 ```{r}
 
-pwt =  lm(Weight~ Length1 + Length2 + Length3 + Height, data = Roach)
-summary(pwt)
+pwt3 =  lm(Weight~ Length1 + Length2 + Length3 + Height, data = Roach)
+summary(pwt3)
 ```
 
 ```{r}
 library(leaps)
-regsubsets.out <-
+regsubsets3.out <-
     regsubsets(Weight ~ Length1+ Length2 + Length3 + Height,
                data = Roach,
                nbest = 2,       # 1 best model for each number of predictors
                nvmax = NULL,    # NULL for no limit on number of variables
                force.in = NULL, force.out = NULL,
                method = "exhaustive")
-regsubsets.out
+regsubsets3.out
 ```
 
 ```{r}
-summary.out <- summary(regsubsets.out)
-as.data.frame(summary.out$outmat)
+summary3.out <- summary(regsubsets3.out)
+as.data.frame(summary3.out$outmat)
 ```
 
 ### Best Models
 
+The best model would have all four variables.
+
 ### Best Two regressor model
 
+The best two regressor model for Roach would be Length 1 and Length 3.
+
 ## Final Summary Statements
+
